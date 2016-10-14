@@ -1,13 +1,13 @@
 int hopdist = 20;
 int frogx = 400;
 int frogy = 0;
-Car car1 = new Car(800, 50, 50, 15); 
-Car car2 = new Car(800, 100, 50, -10); 
-Car car3 = new Car(800, 150, 50, 5); 
+Car car1 = new Car(800, 50, 50, random(20) - 7); 
+Car car2 = new Car(800, 100, 50, random(20) - 10); 
+Car car3 = new Car(800, 150, 50, random(20) - 9); 
 Car car4 = new Car(800, 200, 50, random(20) - 10); 
-Car car5 = new Car(800, 250, 50, random(10) - 5);
-Car car6 = new Car(800, 300, 50, random(20) - 10); 
-Car car7 = new Car(800, 350, 50, random(20) - 10); 
+Car car5 = new Car(800, 250, 50, random(20) - 5);
+Car car6 = new Car(800, 300, 50, random(20)); 
+Car car7 = new Car(800, 350, 50, random(20) - 5); 
 void setup(){
   size(800,400);
   
@@ -33,6 +33,16 @@ void draw(){
   car6.carMove();
   car7.carMove();
   intersects(car1);
+  intersects(car2);
+  intersects(car3);
+  intersects(car4);
+  intersects(car5);
+  intersects(car6);
+  intersects(car7);
+  if(frogy >= 375){
+    println("You Won");
+    System.exit(1);
+  }
 }
 class Car{
   
@@ -120,4 +130,3 @@ if ((frogy > car.getY() && frogy < car.getY()+50) && (frogx > car.getX() && frog
         return false;
     }
 }
-
