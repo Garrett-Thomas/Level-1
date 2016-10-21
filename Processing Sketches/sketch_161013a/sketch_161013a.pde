@@ -1,21 +1,21 @@
 int hopdist = 20;
 int frogx = 400;
 int frogy = 0;
-Car car1 = new Car(800, 50, 50, random(20) - 7); 
-Car car2 = new Car(800, 100, 50, random(20) - 10); 
-Car car3 = new Car(800, 150, 50, random(20) - 9); 
-Car car4 = new Car(800, 200, 50, random(20) - 10); 
-Car car5 = new Car(800, 250, 50, random(20) - 5);
-Car car6 = new Car(800, 300, 50, random(20)); 
-Car car7 = new Car(800, 350, 50, random(20) - 5); 
+Car car1 = new Car(800, 50, random (75) + 23, random(20)); 
+Car car2 = new Car(800, 100, random (75) + 23, random(20)); 
+Car car3 = new Car(800, 150, random (75) + 23, random(20)); 
+Car car4 = new Car(800, 200, random (75) + 23, random(20)); 
+Car car5 = new Car(800, 250, random (75) + 23, random(20));
+Car car6 = new Car(800, 300, random (75) + 23, random(20)); 
+Car car7 = new Car(800, 350, random (75) + 23, random(20)); 
 void setup(){
   size(800,400);
   
 }
 void draw(){
-  background(000, 000, 000);
-  fill(000,255,00);
-  ellipse(frogx, frogy, 25, 25);
+  background(random(255), random(255), random(255));
+  fill(random(255), random(255), random(255));
+  ellipse(frogx, frogy, random(35) -2, random(35) -2);
   println(mouseX);
   println(frogx);
   car1.display();
@@ -41,26 +41,28 @@ void draw(){
   intersects(car7);
   if(frogy >= 375){
     println("You Won");
-    System.exit(1);
+   text( "You Won", frogx - 80, frogy); 
+  textSize(40); 
+
   }
 }
 class Car{
   
   float carX;
   int carY;
-  int carSize;
+  float carSize;
   float carSpeed; 
   float getX() {
     return carX;
   }int getY() {
     return carY;
-  }int getSize() {
+  }float getSize() {
     return carSize;
   }void gameOver(){
     
     
   }
-  Car( float carX, int carY, int carSize, float carSpeed){
+  Car( float carX, int carY, float carSize, float carSpeed){
     this.carX = carX;
     this.carY = carY;
     this.carSize = carSize;
@@ -68,8 +70,8 @@ class Car{
   }
   void display() 
   {
-    fill(0,255,0);
-    rect(carX, carY, carSize, 50);
+    fill(random(255),random(255),random(255));
+    rect(carX, carY, random(75), 50);
   }
   void carMove(){
     carX -= carSpeed;
@@ -123,7 +125,7 @@ void keyPressed()
 }
 boolean intersects(Car car) {
 if ((frogy > car.getY() && frogy < car.getY()+50) && (frogx > car.getX() && frogx < car.getX()+car.getSize())){
-  System.exit(1);
+  frogy = 0;
     return true;
 }
     else {
