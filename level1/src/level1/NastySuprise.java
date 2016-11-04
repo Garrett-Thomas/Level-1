@@ -1,5 +1,7 @@
 package level1;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -9,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-public class NastySuprise {
+public class NastySuprise implements ActionListener {
 	JFrame frame;
 	JPanel panel;
 	JButton button1;
@@ -17,6 +19,7 @@ public class NastySuprise {
 	public static void main(String[] args) {
 		NastySuprise trick = new NastySuprise();
 		trick.anOriginalMethodName();
+		
 	}
 	private void anOriginalMethodName(){
 		frame = new JFrame();
@@ -30,7 +33,9 @@ public class NastySuprise {
 		panel.add(button2);
 		button1.setText("Trick");
 		button2.setText("Treat");
-		//button1.setBounds(0, 100, 100, 100);
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		
 	}
 
 
@@ -47,5 +52,19 @@ private void showPictureFromTheInternet(String imageUrl) {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+}
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if(button1.equals(e.getSource())){
+	showPictureFromTheInternet("http://blogs-images.forbes.com/kristintablang/files/2016/02/Uber-Puppies.jpg");
+	System.out.println("1");
+	}else if(button2.equals(e.getSource())){
+		System.out.println("2");
+		for (int i = 0; i < 10; i++) {
+	showPictureFromTheInternet("https://media.giphy.com/media/7WlEkydlQEi0o/giphy-facebook_s.jpg");
+		}
+	}
+		
 }
 }
