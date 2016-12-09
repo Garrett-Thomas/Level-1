@@ -75,7 +75,6 @@ public class SimpleCalculator implements ActionListener {
 		String division2 = Integer.toString(division);
 		if(button.equals(e.getSource())){
 			text3.setText(addition2);
-			System.out.println(addition2);
 		} else if(button2.equals(e.getSource())){
 			text3.setText(subtraction2);
 		}else if(button3.equals(e.getSource())){
